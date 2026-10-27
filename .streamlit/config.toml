@@ -1,0 +1,11 @@
+[theme]
+baseRadius = "medium"
+
+[theme.light]
+primaryColor = "#2E7D32"
+
+[theme.dark]
+primaryColor = "#66BB6A"
+
+[browser]
+gatherUsageStats = false
