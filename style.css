@@ -1,0 +1,50 @@
+/* 정적인 스타일만 둔다. 사용자 입력은 넣지 않는다. */
+.block-container { max-width: 640px; padding-top: 2.5rem; }
+
+/* 입력 폼과 아이템 행은 좁은 화면에서도 한 줄 유지 */
+.st-key-add_row [data-testid="stHorizontalBlock"],
+[class*="st-key-item_"] [data-testid="stHorizontalBlock"] {
+    flex-wrap: nowrap !important;
+    gap: 0.5rem;
+}
+.st-key-add_row [data-testid="stColumn"],
+[class*="st-key-item_"] [data-testid="stColumn"] {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+}
+.st-key-add_row [data-testid="stColumn"]:has(.stTextInput),
+[class*="st-key-item_"] [data-testid="stColumn"]:has(.stMarkdown),
+[class*="st-key-item_"] [data-testid="stColumn"]:has(.stTextInput) {
+    flex: 1 1 0 !important;
+}
+.st-key-add_row [data-testid="stColumn"]:has(.stNumberInput) { width: 7rem !important; }
+
+/* 아이템 카드 */
+.st-key-item_list { gap: 0.5rem; }
+[class*="st-key-item_"]:not(.st-key-item_list) {
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.75rem;
+    transition: opacity 0.15s;
+}
+[class*="st-key-item_"] [data-testid="stMarkdownContainer"] { margin-bottom: 0; }
+[class*="st-key-item_checked_"] { opacity: 0.55; }
+[class*="st-key-item_editing_"] { border: 2px solid var(--accent) !important; }
+
+.item-name { overflow-wrap: anywhere; line-height: 1.6; }
+.item-name.checked .item-text { text-decoration: line-through; opacity: 0.6; }
+.item-qty { opacity: 0.6; font-size: 0.9em; }
+
+/* 손가락으로 누르기 쉬운 버튼 크기 */
+.stButton button, .stFormSubmitButton button { min-height: 40px; min-width: 40px; }
+[class*="st-key-item_"] .stButton button { padding: 0 0.5rem; }
+/* ✏️를 누르면 그 자리에 [저장]이 생기는데, 남아 있는 툴팁이 클릭을 가로채지 않게 한다 */
+[data-baseweb="tooltip"], [data-baseweb="tooltip"] * { pointer-events: none !important; }
+
+.st-key-progress_card p { margin-bottom: 0.25rem; }
+
+@media (max-width: 640px) {
+    .block-container { padding-top: 1.5rem; }
+    h1 { font-size: 1.9rem !important; }
+    .st-key-add_row [data-testid="stColumn"]:has(.stNumberInput) { width: 4.5rem !important; }
+}
